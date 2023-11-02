@@ -400,4 +400,4 @@ FodyWeavers.xsd
 # Ignore VS files
 *.sln
 *.vcxproj
-*.vcxproj.filters.*
+*.vcxproj.filters.txt
