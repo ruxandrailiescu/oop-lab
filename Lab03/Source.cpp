@@ -130,8 +130,10 @@ void params_struct_example(Student* ls)
 
 void params_ex(int p1, int p2, int p3)
 {
-
-
+	//parameters do not change after params_ex() scope ends
+	p1++;
+	p2++;
+	p3++;
 }
 
 void ref_param(Student& s)
