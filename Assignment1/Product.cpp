@@ -4,18 +4,20 @@ using namespace std;
 
 class Product
 {
-	int id;
-	char* name;
-	char* description;
-	double price;
-	double* priceHistory;
-	int priceHistorySize;		// cannot use .size() on const double* pointer
+	int id = -1;
+	char* name = nullptr;
+	char* description = nullptr;
+	double price = -1;
+	double* priceHistory = nullptr;
+	int priceHistorySize = -1;		// cannot use .size() on const double* pointer
 
 public:
-	Product(int _id, const char* _name, const char* _description, double _price, const double* _priceHistory, int _priceHistorySize) :
-		id(_id), price(_price), priceHistorySize(_priceHistorySize)
+	Product(int _id, const char* _name, const char* _description, double _price, const double* _priceHistory, int _priceHistorySize) : id(_id)
 	{
 
+		this->set_name(_name);
+		this->set_description(_description);
+		this->set_price(_price, _priceHistory, _priceHistorySize);
 
 	}
 
@@ -56,10 +58,12 @@ public:
 		}
 
 		this->priceHistory = new double[_priceHistorySize + 1];
-		for (int i = 0; i <= _priceHistorySize; i++) {
+		for (int i = 0; i < _priceHistorySize; i++) {
 			this->priceHistory[i + 1] = _priceHistory[i];
 		}
+
 		this->priceHistory[0] = this->price;
+		this->priceHistorySize = _priceHistorySize + 1;
 	}
 
 	//all getters
@@ -94,11 +98,25 @@ public:
 
 	double getPriceAverage()
 	{
-
+		double sum = 0;
+		for (int i = 0; i < this->priceHistorySize; i++) {
+			sum += this->priceHistory[i];
+		}
+		return sum / priceHistorySize;
 	}
 
 	~Product()
 	{
-
+		delete[] this->name;
+		delete[] this->description;
+		delete[] this->priceHistory;
 	}
 };
+
+
+int main() {
+
+	Product p1(1234, "Baguette", "French baguette", 10.0, { 10.5,9.7,11.2 }, 3);		// compiler error
+
+
+}
