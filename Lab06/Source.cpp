@@ -1,6 +1,6 @@
 // All getters & setters for Student class implemented in Lab04/Source.cpp
 // 
-// Lab06/Source.cpp - focus on Book class & its public interface (accessor methods) implemented in class  
+// Lab06/Source.cpp - focus on Book class & its public interface (accessor methods) implemented during laboratory  
 
 #include <iostream>
 #include <string>
