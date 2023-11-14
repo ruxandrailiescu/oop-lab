@@ -143,6 +143,7 @@ public:
 		delete[] this->name;
 		delete[] this->description;
 		delete[] this->priceHistory;
+		cout << endl << "Destructor called." << endl;
 	}
 };
 
@@ -220,10 +221,10 @@ Product* input_instantiation() {
 
 	//call constructor to instantiate object
 //	Product p_input(p_id, p_name.c_str(), p_description.c_str(), p_price, p_priceHistory, p_priceHistorySize);
-	Product p_input(p_id, p_name, p_description, p_price, p_priceHistory, p_priceHistorySize);
+	Product *p_input = new Product(p_id, p_name, p_description, p_price, p_priceHistory, p_priceHistorySize);
 
 	delete[] p_priceHistory;
-	return &p_input;
+	return p_input;
 }
 
 
