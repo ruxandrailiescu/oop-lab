@@ -95,6 +95,11 @@ public:
 
 	Student& operator=(const Student& s)
 	{
+
+		if (this == &s) {
+			return *this;
+		}
+
 		if (note != nullptr)
 		{
 			delete[] note;
@@ -102,10 +107,6 @@ public:
 		if (adresa != nullptr)
 		{
 			delete[] adresa;
-		}
-
-		if (this == &s) {
-			return *this;
 		}
 
 		this->nume = s.nume;
