@@ -103,6 +103,11 @@ public:
 		{
 			delete[] adresa;
 		}
+
+		if (this == &s) {
+			return *this;
+		}
+
 		this->nume = s.nume;
 		this->varsta = s.varsta;
 		this->nr_matricol = s.nr_matricol;
@@ -464,6 +469,9 @@ int main()
 	cout << sizeof(s) << endl;
 	Student s2 = s;
 	cout << sizeof(s2) << endl;
+
+	s = s;
+	cout << s.nume << endl;
 
 	ps = new Student();
 	cout << ps->nume << endl;
